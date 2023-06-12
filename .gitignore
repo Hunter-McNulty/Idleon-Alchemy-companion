@@ -3,3 +3,5 @@ dist
 out.txt
 __pycache__
 main.spec
+make_build.py
+venv

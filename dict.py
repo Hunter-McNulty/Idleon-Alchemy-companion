@@ -1,4 +1,17 @@
 
+def check(cauldron):
+    match cauldron:
+        case "Power":
+            return power_bubbles
+        case "Quicc":
+            return quicc_bubbles
+        case "High-IQ":
+            return iq_bubbles
+        case "Kazam":
+            return kazam_bubbles
+
+
+
 power_bubbles = [["Roid Raging", "Add", 1, 0, ""], ["Warriors rule", "DecayMult", 2, 50, "x"], ["Hearty Diggy", "Decay", 50, 100, "%"], ["Wyoming blood", "BigBase", 23.5, 1.5, "%"],
                  ["Reely Smart", "Decay", 100, 80, "%"], ["Big Meaty Claws", "Add", 1, 0.02, ""], ["Sploosh Sploosh", "BigBase", 23.5, 1.5, "%"], ["Stronk Tool", "Decay", 65, 70, "%"],
                  ["FMJ", "Add", 0.5, 0, "%"], ["Bappity boopity", "Decay", 35, 100, "%"], ["Brittley Spears", "Decay", 40, 50, "%"], ["Call me bob", "BigBase", 25, 2.5, "%"],
