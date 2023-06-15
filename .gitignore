@@ -5,3 +5,4 @@ __pycache__
 main.spec
 make_build.py
 venv
+.vscode

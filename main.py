@@ -13,7 +13,7 @@ def resource_path(relative_path):
         base_path = path.abspath(".")
     return path.join(base_path, relative_path)
 
-
+frames = {}
 
 class Window(tkinter.Tk):
     def __init__(self):
@@ -22,51 +22,62 @@ class Window(tkinter.Tk):
         self.geometry("505x500")
         
 
+        def create_frames():
+            for frame in range(1, 25, 5):
+                BubbleFrame(self, "Power", [frame, frame+4], f"Power {frame}")
+                BubbleFrame(self, "Quicc", [frame, frame+4], f"Quicc {frame}")
+                BubbleFrame(self, "High-IQ", [frame, frame+4], f"High-IQ {frame}")
+                BubbleFrame(self, "Kazam", [frame, frame+4], f"Kazam {frame}")
+
+
         def raise_frame(cauldron, number):
-            active_frame = BubbleFrame(self, cauldron, number)
-            active_frame.tkraise()
+            tempstring = f"{cauldron} {number}"
+            frames[tempstring].tkraise()
 
         self.menu = tkinter.Menu(self)
         
         self.pmenubar = tkinter.Menu(self.menu, tearoff=0)
         self.menu.add_cascade(label="Power Cauldron", menu=self.pmenubar)
-        self.pmenubar.add_command(label="#1-5", command=lambda: raise_frame("Power", [1, 5]))
-        self.pmenubar.add_command(label="#6-10", command=lambda: raise_frame("Power", [6, 10]))
-        self.pmenubar.add_command(label="#11-15", command=lambda: raise_frame("Power", [11, 15]))
-        self.pmenubar.add_command(label="#16-20", command=lambda: raise_frame("Power", [16, 20]))
-        self.pmenubar.add_command(label="#21-25", command=lambda: raise_frame("Power", [21, 25]))
+        self.pmenubar.add_command(label="#1-5", command=lambda: raise_frame("Power", 1))
+        self.pmenubar.add_command(label="#6-10", command=lambda: raise_frame("Power", 6))
+        self.pmenubar.add_command(label="#11-15", command=lambda: raise_frame("Power", 11))
+        self.pmenubar.add_command(label="#16-20", command=lambda: raise_frame("Power", 16))
+        self.pmenubar.add_command(label="#21-25", command=lambda: raise_frame("Power", 21))
 
         self.qmenubar = tkinter.Menu(self.menu, tearoff=0)
         self.menu.add_cascade(label="Quicc Cauldron", menu=self.qmenubar)
-        self.qmenubar.add_command(label="#1-5", command=lambda: raise_frame("Quicc", [1, 5]))
-        self.qmenubar.add_command(label="#6-10", command=lambda: raise_frame("Quicc", [6, 10]))
-        self.qmenubar.add_command(label="#11-15", command=lambda: raise_frame("Quicc", [11, 15]))
-        self.qmenubar.add_command(label="#16-20", command=lambda: raise_frame("Quicc", [16, 20]))
-        self.qmenubar.add_command(label="#21-25", command=lambda: raise_frame("Quicc", [21, 25]))
+        self.qmenubar.add_command(label="#1-5", command=lambda: raise_frame("Quicc", 1))
+        self.qmenubar.add_command(label="#6-10", command=lambda: raise_frame("Quicc", 6))
+        self.qmenubar.add_command(label="#11-15", command=lambda: raise_frame("Quicc", 11))
+        self.qmenubar.add_command(label="#16-20", command=lambda: raise_frame("Quicc", 16))
+        self.qmenubar.add_command(label="#21-25", command=lambda: raise_frame("Quicc", 21))
 
         self.imenubar = tkinter.Menu(self.menu, tearoff=0)
         self.menu.add_cascade(label="High-IQ Cauldron", menu=self.imenubar)
-        self.imenubar.add_command(label="#1-5", command=lambda: raise_frame("High-IQ", [1, 5]))
-        self.imenubar.add_command(label="#6-10", command=lambda: raise_frame("High-IQ", [6, 10]))
-        self.imenubar.add_command(label="#11-15", command=lambda: raise_frame("High-IQ", [11, 15]))
-        self.imenubar.add_command(label="#16-20", command=lambda: raise_frame("High-IQ", [16, 20]))
-        self.imenubar.add_command(label="#21-25", command=lambda: raise_frame("High-IQ", [21, 25]))
+        self.imenubar.add_command(label="#1-5", command=lambda: raise_frame("High-IQ", 1))
+        self.imenubar.add_command(label="#6-10", command=lambda: raise_frame("High-IQ", 6))
+        self.imenubar.add_command(label="#11-15", command=lambda: raise_frame("High-IQ", 11))
+        self.imenubar.add_command(label="#16-20", command=lambda: raise_frame("High-IQ", 16))
+        self.imenubar.add_command(label="#21-25", command=lambda: raise_frame("High-IQ", 21))
 
         self.kmenubar = tkinter.Menu(self.menu, tearoff=0)
         self.menu.add_cascade(label="Kazam Cauldron", menu=self.kmenubar)
-        self.kmenubar.add_command(label="#1-5", command=lambda: raise_frame("Kazam", [1, 5]))
-        self.kmenubar.add_command(label="#6-10", command=lambda: raise_frame("Kazam", [6, 10]))
-        self.kmenubar.add_command(label="#11-15", command=lambda: raise_frame("Kazam", [11, 15]))
-        self.kmenubar.add_command(label="#16-20", command=lambda: raise_frame("Kazam", [16, 20]))
-        self.kmenubar.add_command(label="#21-25", command=lambda: raise_frame("Kazam", [21, 25]))
+        self.kmenubar.add_command(label="#1-5", command=lambda: raise_frame("Kazam", 1))
+        self.kmenubar.add_command(label="#6-10", command=lambda: raise_frame("Kazam", 6))
+        self.kmenubar.add_command(label="#11-15", command=lambda: raise_frame("Kazam", 11))
+        self.kmenubar.add_command(label="#16-20", command=lambda: raise_frame("Kazam", 16))
+        self.kmenubar.add_command(label="#21-25", command=lambda: raise_frame("Kazam", 21))
 
         self.config(menu=self.menu)
+        create_frames()
+
 
 class BubbleFrame(tkinter.Frame):
-    def __init__(self, parent, cauldron, number):
+    def __init__(self, parent, cauldron, number, identifier):
         tkinter.Frame.__init__(self, parent)
         self.grid(column=0, row=0)
         cauldronlist = dict.check(cauldron)
+        frames[identifier] = self
 
         for ids in range(number[0], number[1]+1):
             self.unit = cauldronlist[ids-1][4]
@@ -136,18 +147,22 @@ class CustomEntry(tkinter.Frame):
         
 
 
-#Write special claus for 0, since log10(0)+1 is undefined
-#Need to add a check to disable non numbers
-#Shortcut keys maybe?
+#Rewrite check to only reset one of the entrys instead of both
 
     def check(self, *args):
         try:
-            if log10(int(self.level_1.get())) + 1 > 5:
+            #print(self.level_1.get())
+            if log10(int(self.level_1.get())) + 1 >= 5:
                 num = int(self.level_1.get() / 10)
                 self.level_1.set(num)
-            if log10(int(self.level_2.get())) + 1 > 5:
+                #print(self.level_1.get())
+            if log10(int(self.level_2.get())) + 1 >= 5:
                 num = int(self.level_2.get() / 10)
                 self.level_2.set(num)
+            if int(self.level_1.get() / 10) == 0:
+                self.level_1.set(1)
+            if int(self.level_2.get() / 10) == 0:
+                self.level_2.set(1)
         except:
             self.level_1.set(1)
             self.level_2.set(1)
